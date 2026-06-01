@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Book Recommender</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css">
+
+    <style>
+        .book-card {
+            background: #fff;
+            padding: 10px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 2px 8px rgba(0,0,0,0.1);
+            height: 380px;
+        }
+
+        .book-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .book-title {
+            font-size: 16px;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        .book-author {
+            font-size: 14px;
+            color: gray;
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/">BookRecommender</a>
+        </div>
+
+        <ul class="nav navbar-nav">
+            <li class="active"><a href="/">Home</a></li>
+            <li><a href="/recommend">Recommend</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </div>
+</nav>
+
+<div class="container">
+
+    <h2 class="text-center">Popular Books</h2>
+
+    <div class="row">
+
+        {% for i in range(book_name|length) %}
+        <div class="col-md-3">
+
+            <div class="book-card">
+
+                <img src="{{ image[i] }}"
+                     onerror="this.src='https://via.placeholder.com/150x200?text=No+Image';">
+
+                <div class="book-title">{{ book_name[i] }}</div>
+                <div class="book-author">{{ author[i] }}</div>
+
+                <p>Votes: {{ votes[i] }}</p>
+                <p>Rating: {{ rating[i] }}</p>
+
+            </div>
+
+        </div>
+        {% endfor %}
+
+    </div>
+
+    <hr>
+
+    <div id="contact">
+        <h3>Contact</h3>
+        <p>Email: support@bookrecommender.com</p>
+    </div>
+
+</div>
+
+</body>
+</html>

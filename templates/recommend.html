@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Recommend Books</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css">
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/">BookRecommender</a>
+        </div>
+
+        <ul class="nav navbar-nav">
+            <li><a href="/">Home</a></li>
+            <li class="active"><a href="/recommend">Recommend</a></li>
+            <li><a href="/">Contact</a></li>
+        </ul>
+    </div>
+</nav>
+
+<div class="container">
+
+    <h1 class="text-center">Book Recommendation System</h1>
+
+    <form action="/recommend" method="post">
+        <input type="text" name="user_input" class="form-control" placeholder="Enter Book Name">
+        <br>
+        <button class="btn btn-success">Recommend</button>
+    </form>
+
+    <h3>{{ message }}</h3>
+
+    <div class="row">
+
+        {% if data %}
+            {% for i in data %}
+            <div class="col-md-3" style="margin-top:20px;">
+                <div class="card">
+
+                    <img src="{{ i[2] }}"
+                         style="width:100%; height:200px;"
+                         onerror="this.src='https://via.placeholder.com/150x200?text=No+Image';">
+
+                    <h4>{{ i[0] }}</h4>
+                    <p>{{ i[1] }}</p>
+
+                </div>
+            </div>
+            {% endfor %}
+        {% endif %}
+
+    </div>
+
+</div>
+
+</body>
+</html>
